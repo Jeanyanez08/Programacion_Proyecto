@@ -1,6 +1,67 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="styles.css"><title>Acceso del personal</title></head><body>
-<header class="top"><div class="brand">Sistema Nacional de Vacunación<small>República Bolivariana de Venezuela</small></div><nav><a href="index.html">Consulta pública</a><a href="login.html" aria-current="page">Acceso del personal</a></nav></header>
-<main class="login">
-<h1>Iniciar sesión</h1>
-<form class="card"><label for="u">Usuario</label><input id="u" autocomplete="username"><label for="p">Contraseña</label><input id="p" type="password" autocomplete="current-password"><button class="btn" type="button">Entrar</button></form>
-</main><footer>Sistema Nacional de Vacunación · Fase 1: vistas (HTML y CSS). Datos de ejemplo.</footer></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso del Personal · Sistema Nacional de Vacunación</title>
+    <link rel="stylesheet" href="styles.css"> <!-- ¡Aquí sigue conectado tu CSS! -->
+</head>
+<body>
+    <header class="top">
+        <div class="brand">
+            Sistema Nacional de Vacunación
+            <small>Módulo de Autenticación Institucional</small>
+        </div>
+        <nav>
+            <a href="index.html">Consulta Pública</a>
+            <a href="login.html" aria-current="page">Acceso del Personal</a>
+        </nav>
+    </header>
+
+    <main style="max-width: 440px; margin-top: 64px;">
+        <div class="card">
+            <h1 style="font-size: 1.5rem; text-align: center; margin-bottom: 1.5rem;">Iniciar Sesión</h1>
+
+            <form>
+                <label for="rol">Seleccione su Perfil</label>
+                <select id="rol" style="margin-bottom: 16px;">
+                    <option value="admin">Perfil 1: Master / Administrador</option>
+                    <option value="centro">Perfil 2: Operador de Centro de Salud</option>
+                    <option value="subregion">Perfil 3: Subregión de Salud</option>
+                </select>
+
+                <label for="u">Usuario o Correo Institucional</label>
+                <input id="u" type="text" autocomplete="username" placeholder="usuario.sistema" required>
+
+                <label for="p">Contraseña de Acceso</label>
+                <input id="p" type="password" autocomplete="current-password" placeholder="••••••••" required>
+
+                <div class="acciones" style="margin-top: 24px;">
+                    <!-- Único cambio en el botón: agregamos id="btnIngresar" -->
+                    <button class="btn" type="button" id="btnIngresar" style="width: 100%;">Ingresar al Sistema</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        Sistema Nacional de Vacunación · Acceso Restringido y Monitoreado
+    </footer>
+
+    <!-- Este script lee el select y te redirige -->
+    <script>
+        document.getElementById('btnIngresar').addEventListener('click', function() {
+            var rolSeleccionado = document.getElementById('rol').value;
+
+            // Redirección según la opción elegida en el menú desplegable
+            if (rolSeleccionado === "admin") {
+                window.location.href = "master.html";
+            } else if (rolSeleccionado === "centro") {
+                window.location.href = "centro.html";
+            } else if (rolSeleccionado === "subregion") {
+                window.location.href = "subregion.html";
+            }
+        });
+    </script>
+</body>
+</html>
